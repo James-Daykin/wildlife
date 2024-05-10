@@ -5,7 +5,7 @@ export const fetchDataForCountry = createAsyncThunk(
   'animals/fetchDataForCountry',
   async (countryName, thunkAPI) => {
     try {
-      const response = await fetch(`https://swe-endangered-animals.appspot.com/single_country_data/?country_name=${countryName}`);
+      const response = await fetch(`https://cors.bridged.cc/https://swe-endangered-animals.appspot.com/single_country_data/?country_name=${countryName}`);
       if (!response.ok) {
         throw new Error('Failed to fetch country data');
       }

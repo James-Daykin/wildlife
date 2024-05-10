@@ -1,44 +1,45 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+// In the file where you're using the reducer
+import animalReducer from './animalSlice'; // Simplified import
+
 import { fetchDataForCountry } from './animalSlice';
+
+const countries = [
+  {name: "Azerbaijan"}
+];
 
 const WorldMap = () => {
   const [selectedCountry, setSelectedCountry] = useState('');
+  const dispatch = useDispatch();
 
-  const handleCountryClick = (countryName) => {
-    setSelectedCountry(countryName);
-    fetchDataForCountry(countryName)
-      .then((data) => {
-        console.log('Data for', countryName, ':', data);
-        // Handle fetched data
-      })
-      .catch((error) => {
-        console.error('Error fetching data for', countryName, ':', error);
-      });
+  const handleCountryChange = (e) => {
+    setSelectedCountry(e.target.value);
+  };
+
+  const handleFetchData = () => {
+    if (selectedCountry) {
+      dispatch(fetchDataForCountry(selectedCountry));
+    }
   };
 
   return (
-    <div style={{ width: '100%', height: '500px' }}>
-      <svg width="100%" height="auto" viewBox="0 0 1000 500">
-        {/* Add SVG path elements for each country */}
-        <path
-          d="M150 100 L200 150 L200 200 L100 300 Z"
-          fill={selectedCountry === 'CountryA' ? '#F53' : '#D6D6DA'}
-          onClick={() => handleCountryClick('CountryA')}
-          style={{ cursor: 'pointer', stroke: '#fff', strokeWidth: 0.5 }}
-        />
-        <path
-          d="M400 100 L450 150 L450 200 L350 300 Z"
-          fill={selectedCountry === 'CountryB' ? '#F53' : '#D6D6DA'}
-          onClick={() => handleCountryClick('CountryB')}
-          style={{ cursor: 'pointer', stroke: '#fff', strokeWidth: 0.5 }}
-        />
-        {/* Add more paths for other countries */}
-      </svg>
-      {selectedCountry && <p>Selected country: {selectedCountry}</p>}
+    <div>
+      <h2>Select a Country</h2>
+      <select value={selectedCountry} onChange={handleCountryChange}>
+        <option value="">Select a country</option>
+        {countries.map((country, index) => (
+          <option key={index} value={country.name}>
+            {country.name}
+          </option>
+        ))}
+      </select>
+      <button onClick={handleFetchData} disabled={!selectedCountry}>
+        Fetch Data
+      </button>
     </div>
   );
 };
 
 export default WorldMap;
-
 
