@@ -1,13 +1,15 @@
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
 // Define your async thunk function
 export const fetchDataForCountry = createAsyncThunk(
-  'animals/fetchDataForCountry',
+  "animals/fetchDataForCountry",
   async (countryName, thunkAPI) => {
     try {
-      const response = await fetch(`https://swe-endangered-animals.appspot.com/single_country_data/?country_name=${countryName}`);
+      const response = await fetch(
+        `https://intlayer-ro3r.vercel.app/endangered/${countryName}`
+      );
       if (!response.ok) {
-        throw new Error('Failed to fetch country data');
+        throw new Error("Failed to fetch country data");
       }
       const data = await response.json();
       return data;
@@ -18,12 +20,14 @@ export const fetchDataForCountry = createAsyncThunk(
 );
 
 export const fetchAnimalData = createAsyncThunk(
-  'animals/fetchAnimalData',
+  "animals/fetchAnimalData",
   async (animalName, thunkAPI) => {
     try {
-      const response = await fetch(`https://swe-endangered-animals.appspot.com/single_animal_data?animal_name=${animalName}`);
+      const response = await fetch(
+        `https://swe-endangered-animals.appspot.com/single_animal_data?animal_name=${animalName}`
+      );
       if (!response.ok) {
-        throw new Error('Failed to fetch animal data');
+        throw new Error("Failed to fetch animal data");
       }
       const data = await response.json();
       return data;
@@ -34,7 +38,7 @@ export const fetchAnimalData = createAsyncThunk(
 );
 
 const animalSlice = createSlice({
-  name: 'animals',
+  name: "animals",
   initialState: {
     animalData: [],
     loading: false,

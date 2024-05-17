@@ -1,16 +1,14 @@
-import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 // In the file where you're using the reducer
-import animalReducer from './animalSlice'; // Simplified import
+import animalReducer from "./animalSlice"; // Simplified import
 
-import { fetchDataForCountry } from './animalSlice';
+import { fetchDataForCountry } from "./animalSlice";
 
-const countries = [
-  {name: "Azerbaijan"}
-];
+const countries = [{ name: "Africa" }];
 
 const WorldMap = () => {
-  const [selectedCountry, setSelectedCountry] = useState('');
+  const [selectedCountry, setSelectedCountry] = useState("");
   const dispatch = useDispatch();
 
   const handleCountryChange = (e) => {
@@ -42,4 +40,3 @@ const WorldMap = () => {
 };
 
 export default WorldMap;
-
