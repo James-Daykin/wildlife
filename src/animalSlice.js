@@ -6,7 +6,7 @@ export const fetchDataForCountry = createAsyncThunk(
   async (countryName, thunkAPI) => {
     try {
       const response = await fetch(
-        `https://intlayer-ro3r.vercel.app/endangered/${countryName}`
+        `https://cors-anywhere.herokuapp.com/https://wildlife-chi.vercel.app/endangered/${countryName}`
       );
       if (!response.ok) {
         throw new Error("Failed to fetch country data");
