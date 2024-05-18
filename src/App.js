@@ -7,7 +7,7 @@ const App = () => {
   return (
     <>
       <div className="top">
-        <h2 className="titletext">heyy2</h2>
+        <h2 className="titletext">heyy23</h2>
         <WorldMap></WorldMap>
         {countryAnimals && <h1>{countryAnimals}</h1>}
         <img
