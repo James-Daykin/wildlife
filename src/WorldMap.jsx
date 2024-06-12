@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-// In the file where you're using the reducer
-import animalReducer from "./animalSlice"; // Simplified import
+
+import animalReducer from "./animalSlice";
 
 import { fetchDataForCountry } from "./animalSlice";
 
-const countries = [{ name: "Africa" }];
+const countries = [{ name: "Africa" }, { name: "Asia" }, { name: "America" }];
 
 const WorldMap = () => {
   const [selectedCountry, setSelectedCountry] = useState("");
@@ -22,8 +22,17 @@ const WorldMap = () => {
   };
 
   return (
-    <div>
-      <h2>Select a Country</h2>
+    <div
+      style={{
+        margin: "auto",
+        gap: "20px",
+        backgroundColor: "green",
+        borderRadius: "20px",
+        padding: "20px",
+        paddingTop: "-20px",
+      }}
+    >
+      <h2 style={{ margin: "10px" }}>Select a Country</h2>
       <select value={selectedCountry} onChange={handleCountryChange}>
         <option value="">Select a country</option>
         {countries.map((country, index) => (

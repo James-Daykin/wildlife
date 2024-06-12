@@ -24,9 +24,64 @@
   color: white;
 }
 
-.top {
-  height: 200px;
+body {
+  background-image: url("https://th.bing.com/th/id/OIP.qX-HUamu-KVVZsGGwe6XyAAAAA?rs=1&pid=ImgDetMain");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.animal-card {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 16px;
+  margin: 16px;
+  background-color: rgba(211, 211, 211, 0.705);
+  text-align: center;
+  object-fit: cover;
+  box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.1);
+}
+
+.animal-cards-container {
   display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.animal-image {
+  width: 200;
+  border-radius: 10px;
+}
+
+.additional-info {
+  width: 80%;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 16px;
+  margin: 16px;
+  text-align: center;
+  box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.1);
+}
+
+dialog {
+  width: 80%;
+  border-radius: 20px;
+  text-align: center;
+  position: fixed;
+  left: 0;
+  top: 20%;
+}
+
+.titletext {
+  background-color: orange;
+  margin: 0;
+  margin-bottom: 20px;
+}
+
+.top {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
 }
 
 .App-link {

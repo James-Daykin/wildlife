@@ -6,7 +6,7 @@ export const fetchDataForCountry = createAsyncThunk(
   async (countryName, thunkAPI) => {
     try {
       const response = await fetch(
-        `https://intlayer-ro3r-6gkgavt9a-james-daykins-projects.vercel.app/endangered/${countryName}`
+        `http://localhost:3001/endangered/${countryName}`
       );
       if (!response.ok) {
         throw new Error("Failed to fetch country data");
@@ -21,10 +21,10 @@ export const fetchDataForCountry = createAsyncThunk(
 
 export const fetchAnimalData = createAsyncThunk(
   "animals/fetchAnimalData",
-  async (animalName, thunkAPI) => {
+  async (animalID, thunkAPI) => {
     try {
       const response = await fetch(
-        `https://swe-endangered-animals.appspot.com/single_animal_data?animal_name=${animalName}`
+        `http://localhost:3001/species-descriptions/${animalID}`
       );
       if (!response.ok) {
         throw new Error("Failed to fetch animal data");
@@ -41,6 +41,7 @@ const animalSlice = createSlice({
   name: "animals",
   initialState: {
     animalData: [],
+    selectedAnimal: [],
     loading: false,
     error: null,
   },
@@ -65,8 +66,7 @@ const animalSlice = createSlice({
       })
       .addCase(fetchAnimalData.fulfilled, (state, action) => {
         state.loading = false;
-        // Assuming your animal data is stored differently
-        state.animalData.push(action.payload);
+        state.selectedAnimal = action.payload;
       })
       .addCase(fetchAnimalData.rejected, (state, action) => {
         state.loading = false;
