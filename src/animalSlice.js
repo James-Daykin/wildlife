@@ -6,7 +6,7 @@ export const fetchDataForCountry = createAsyncThunk(
   async (countryName, thunkAPI) => {
     try {
       const response = await fetch(
-        `https://intlayer-m8ehrb3ty-james-daykins-projects.vercel.app/endangered/${countryName}`
+        `https://vercel.com/james-daykins-projects/intlayer/DsoKu2rA68xhMTqkKokmdLLjW1fY/endangered/${countryName}`
       );
       if (!response.ok) {
         throw new Error("Failed to fetch country data");
