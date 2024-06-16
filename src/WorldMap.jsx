@@ -33,17 +33,19 @@ const WorldMap = () => {
       }}
     >
       <h2 style={{ margin: "10px" }}>Select a Country</h2>
-      <select value={selectedCountry} onChange={handleCountryChange}>
-        <option value="">Select a country</option>
-        {countries.map((country, index) => (
-          <option key={index} value={country.name}>
-            {country.name}
-          </option>
-        ))}
-      </select>
-      <button onClick={handleFetchData} disabled={!selectedCountry}>
-        Fetch Data
-      </button>
+      <div style={{ display: "flex", flexDirection: "column" }}>
+        <select value={selectedCountry} onChange={handleCountryChange}>
+          <option value="">Select a country</option>
+          {countries.map((country, index) => (
+            <option key={index} value={country.name}>
+              {country.name}
+            </option>
+          ))}
+        </select>
+        <button onClick={handleFetchData} disabled={!selectedCountry}>
+          Fetch Data
+        </button>
+      </div>
     </div>
   );
 };
