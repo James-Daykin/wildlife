@@ -1,5 +1,5 @@
 import "./App.css";
-import WorldMap from "./WorldMap";
+import Body from "./Body";
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import AnimalCard from "./Card";
@@ -25,7 +25,7 @@ const App = () => {
       />
       <div className="top">
         <h2 className="titletext">Endangered Species</h2>
-        <WorldMap></WorldMap>
+        <Body></Body>
       </div>
       {countryAnimals && (
         <div className="animal-cards-container">
@@ -44,23 +44,14 @@ const App = () => {
           ))}
         </div>
       )}
-
-      <div className="top">
-        <div className="additional-info">
-          {selectedAnimalData.length >= 0
-            ? "Click to reveal additio8nal info"
-            : "Click to reveal additional info"}
+      {countryAnimals.length === 0 && (
+        <div className="top">
+          <div className="additional-info">
+            Select a Continent to pull Endangered Species data from my Express
+            API
+          </div>
         </div>
-      </div>
-      <img
-        width={200}
-        style={{
-          objectFit: "cover",
-        }}
-        src={
-          "https://wildscapia.com/wp-content/uploads/2020/05/amur-leopard-4112011_1280.jpg"
-        }
-      />
+      )}
     </>
   );
 };

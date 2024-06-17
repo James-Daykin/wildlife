@@ -7,7 +7,7 @@ import { fetchDataForCountry } from "./animalSlice";
 
 const countries = [{ name: "Africa" }, { name: "Asia" }, { name: "America" }];
 
-const WorldMap = () => {
+const Body = () => {
   const [selectedCountry, setSelectedCountry] = useState("");
   const dispatch = useDispatch();
 
@@ -32,10 +32,10 @@ const WorldMap = () => {
         paddingTop: "-20px",
       }}
     >
-      <h2 style={{ margin: "10px" }}>Select a Country</h2>
+      <h2 style={{ margin: "0px 10px 0px 0px" }}>Select a Continent</h2>
       <div style={{ display: "flex", flexDirection: "column" }}>
         <select value={selectedCountry} onChange={handleCountryChange}>
-          <option value="">Select a country</option>
+          <option value="">Select a continent</option>
           {countries.map((country, index) => (
             <option key={index} value={country.name}>
               {country.name}
@@ -50,4 +50,4 @@ const WorldMap = () => {
   );
 };
 
-export default WorldMap;
+export default Body;
