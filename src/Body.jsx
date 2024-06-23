@@ -1,23 +1,24 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
+import { fetchDataForCategory } from "./movieSlice"; // Adjust the path as needed
 
-import animalReducer from "./animalSlice";
-
-import { fetchDataForCountry } from "./animalSlice";
-
-const countries = [{ name: "Africa" }, { name: "Asia" }, { name: "America" }];
+const categories = [
+  { name: "Comedy" },
+  { name: "Action" },
+  { name: "Romance" },
+];
 
 const Body = () => {
-  const [selectedCountry, setSelectedCountry] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState("");
   const dispatch = useDispatch();
 
-  const handleCountryChange = (e) => {
-    setSelectedCountry(e.target.value);
+  const handleCategoryChange = (e) => {
+    setSelectedCategory(e.target.value);
   };
 
   const handleFetchData = () => {
-    if (selectedCountry) {
-      dispatch(fetchDataForCountry(selectedCountry));
+    if (selectedCategory) {
+      dispatch(fetchDataForCategory(selectedCategory));
     }
   };
 
@@ -32,17 +33,17 @@ const Body = () => {
         paddingTop: "-20px",
       }}
     >
-      <h2 style={{ margin: "0px 10px 0px 0px" }}>Select a Continent</h2>
+      <h2 style={{ margin: "0px 10px 0px 0px" }}>Select a Category</h2>
       <div style={{ display: "flex", flexDirection: "column" }}>
-        <select value={selectedCountry} onChange={handleCountryChange}>
-          <option value="">Select a continent</option>
-          {countries.map((country, index) => (
-            <option key={index} value={country.name}>
-              {country.name}
+        <select value={selectedCategory} onChange={handleCategoryChange}>
+          <option value="">Select a category</option>
+          {categories.map((category, index) => (
+            <option key={index} value={category.name}>
+              {category.name}
             </option>
           ))}
         </select>
-        <button onClick={handleFetchData} disabled={!selectedCountry}>
+        <button onClick={handleFetchData} disabled={!selectedCategory}>
           Fetch Data
         </button>
       </div>

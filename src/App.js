@@ -2,53 +2,45 @@ import "./App.css";
 import Body from "./Body";
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import AnimalCard from "./Card";
-import { fetchAnimalData } from "./animalSlice";
+import { fetchMovieData } from "./movieSlice"; // Update to your movie slice
 import Modal from "./Modal";
+import MovieCarousel from "./MovieCarousel"; // Adjust the path as needed
 
 const App = () => {
-  const countryAnimals = useSelector((s) => s?.animals?.animalData);
-  const selectedAnimalData = useSelector((s) => s?.animals?.selectedAnimal);
+  const movies = useSelector((s) => s?.movies?.movieData);
+  const selectedMovieData = useSelector((s) => s?.movies?.selectedMovie);
 
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const dispatch = useDispatch();
-  console.log(isModalOpen);
+  console.log(movies);
+
   return (
     <>
       <Modal
         isOpen={isModalOpen}
-        name={selectedAnimalData.name}
-        description={selectedAnimalData.description}
-        image={selectedAnimalData.image}
+        name={selectedMovieData?.name}
+        description={selectedMovieData?.description}
+        image={selectedMovieData?.image}
         onClickFunction={() => setIsModalOpen(false)}
       />
       <div className="top">
-        <h2 className="titletext">Endangered Species</h2>
-        <Body></Body>
+        <h2 className="titletext">Popular Movies</h2>
+        <Body />
       </div>
-      {countryAnimals && (
-        <div className="animal-cards-container">
-          {countryAnimals.map((animal, index) => (
-            <AnimalCard
-              key={index}
-              name={animal.name}
-              image={animal.image}
-              endangeredStatus={animal.conservationStatus}
-              continent={animal.continent}
-              onClickFunction={() => {
-                dispatch(fetchAnimalData(animal.id));
-                setIsModalOpen(true);
-              }}
-            />
-          ))}
+      {movies && movies.length > 0 && (
+        <div className="movie-cards-container">
+          <MovieCarousel
+            movies={movies}
+            dispatch={dispatch}
+            setIsModalOpen={setIsModalOpen}
+          />
         </div>
       )}
-      {countryAnimals.length === 0 && (
+      {movies.length === 0 && (
         <div className="top">
           <div className="additional-info">
-            Select a Continent to pull Endangered Species data from my Express
-            API
+            Select a category to pull popular movies data from my Express API
           </div>
         </div>
       )}

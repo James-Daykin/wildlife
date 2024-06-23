@@ -25,18 +25,18 @@
 }
 
 body {
-  background-image: url("https://th.bing.com/th/id/OIP.qX-HUamu-KVVZsGGwe6XyAAAAA?rs=1&pid=ImgDetMain");
-  background-size: cover;
+  background-color: darkgrey;
+  background-image: linear-gradient(to right, red, purple);
   background-repeat: no-repeat;
 }
 
 .animal-card {
   border: 1px solid #ccc;
   border-radius: 8px;
-  padding: 16px;
+  padding: 10px;
   margin: 16px;
   cursor: pointer;
-  background-color: rgba(211, 211, 211, 0.705);
+  background-color: rgba(65, 65, 65, 0.705);
   text-align: center;
   object-fit: cover;
   box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.1);
@@ -44,7 +44,7 @@ body {
 
 .animal-cards-container {
   display: flex;
-  flex-wrap: wrap;
+
   justify-content: center;
 }
 
@@ -77,6 +77,7 @@ dialog {
   background-color: orange;
   margin: 0;
   margin-bottom: 20px;
+  width: 50%;
 }
 
 select {
@@ -95,6 +96,10 @@ button {
   text-align: center;
   justify-content: center;
   align-items: center;
+}
+
+h2 {
+  margin: 0 0 10px 0;
 }
 
 .App-link {
