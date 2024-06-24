@@ -6,7 +6,7 @@ export const fetchDataForCategory = createAsyncThunk(
   async (categoryName, thunkAPI) => {
     try {
       const response = await fetch(
-        `https://intlayer-ewb4.vercel.app//movies/${categoryName}`
+        `https://intlayer-ewb4.vercel.app/movies/${categoryName}`
       );
       if (!response.ok) {
         throw new Error("Failed to fetch category data");
