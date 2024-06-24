@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { fetchDataForCategory } from "./movieSlice"; // Adjust the path as needed
+import { fetchDataForCategory } from "./movieSlice";
 
 const categories = [
   { name: "Comedy" },
