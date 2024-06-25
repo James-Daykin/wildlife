@@ -1,50 +1,52 @@
+import React, { useState } from "react";
 import "./App.css";
-import Body from "./Body";
-import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { fetchMovieData } from "./movieSlice"; // Update to your movie slice
+import MovieCard from "./MovieCard";
+import Body from "./Body";
 import Modal from "./Modal";
-import MovieCarousel from "./MovieCarousel"; // Adjust the path as needed
+import { fetchMovieData } from "./movieSlice";
 
 const App = () => {
-  const movies = useSelector((s) => s?.movies?.movieData);
-  const selectedMovieData = useSelector((s) => s?.movies?.selectedMovie);
-
+  const movies = useSelector((state) => state.movies.movieData);
+  const selectedMovieData = useSelector((state) => state.movies.selectedMovie);
   const [isModalOpen, setIsModalOpen] = useState(false);
-
   const dispatch = useDispatch();
-  console.log(movies);
-
+  console.log(selectedMovieData);
   return (
-    <>
+    <div className="app-container">
       <Modal
         isOpen={isModalOpen}
         name={selectedMovieData?.name}
         description={selectedMovieData?.description}
-        image={selectedMovieData?.image}
+        trailer={selectedMovieData?.trailer}
         onClickFunction={() => setIsModalOpen(false)}
       />
       <div className="top">
-        <h2 className="titletext">Popular Movies</h2>
-        <Body />
+        <h2 className="titletext">Movie Zone</h2>
       </div>
-      {movies && movies.length > 0 && (
+      <Body />
+      {movies && movies.length > 0 ? (
         <div className="movie-cards-container">
-          <MovieCarousel
-            movies={movies}
-            dispatch={dispatch}
-            setIsModalOpen={setIsModalOpen}
-          />
+          {movies.map((movie, index) => (
+            <MovieCard
+              key={index}
+              name={movie.name}
+              image={movie.image}
+              rating={movie.rating}
+              category={movie.category}
+              onClickFunction={() => {
+                dispatch(fetchMovieData(movie.id));
+                setIsModalOpen(true);
+              }}
+            />
+          ))}
+        </div>
+      ) : (
+        <div className="additional-info">
+          Select a genre to pull movie data from my Express API
         </div>
       )}
-      {movies.length === 0 && (
-        <div className="top">
-          <div className="additional-info">
-            Select a category to pull popular movies data from my Express API
-          </div>
-        </div>
-      )}
-    </>
+    </div>
   );
 };
 

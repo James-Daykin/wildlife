@@ -1,49 +1,36 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { fetchDataForCategory } from "./movieSlice";
+import { fetchDataForCategory, fetchDataForCountry } from "./movieSlice";
 
-const categories = [
-  { name: "Comedy" },
-  { name: "Action" },
-  { name: "Romance" },
-];
+const genres = [{ name: "Comedy" }, { name: "Action" }, { name: "Romance" }];
 
 const Body = () => {
-  const [selectedCategory, setSelectedCategory] = useState("");
+  const [selectedGenre, setSelectedGenre] = useState("");
   const dispatch = useDispatch();
 
-  const handleCategoryChange = (e) => {
-    setSelectedCategory(e.target.value);
+  const handleGenreChange = (e) => {
+    setSelectedGenre(e.target.value);
   };
 
   const handleFetchData = () => {
-    if (selectedCategory) {
-      dispatch(fetchDataForCategory(selectedCategory));
+    if (selectedGenre) {
+      dispatch(fetchDataForCategory(selectedGenre));
     }
   };
 
   return (
-    <div
-      style={{
-        margin: "auto",
-        gap: "20px",
-        backgroundColor: "green",
-        borderRadius: "20px",
-        padding: "20px",
-        paddingTop: "-20px",
-      }}
-    >
-      <h2 style={{ margin: "0px 10px 0px 0px" }}>Select a Category</h2>
-      <div style={{ display: "flex", flexDirection: "column" }}>
-        <select value={selectedCategory} onChange={handleCategoryChange}>
-          <option value="">Select a category</option>
-          {categories.map((category, index) => (
-            <option key={index} value={category.name}>
-              {category.name}
+    <div className="genre-selector">
+      <h2 style={{ color: "white" }}>Select a Genre</h2>
+      <div>
+        <select value={selectedGenre} onChange={handleGenreChange}>
+          <option value="">Select a genre</option>
+          {genres.map((genre, index) => (
+            <option key={index} value={genre.name}>
+              {genre.name}
             </option>
           ))}
         </select>
-        <button onClick={handleFetchData} disabled={!selectedCategory}>
+        <button onClick={handleFetchData} disabled={!selectedGenre}>
           Fetch Data
         </button>
       </div>

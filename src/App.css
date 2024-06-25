@@ -1,116 +1,80 @@
-.App {
+/* App.css */
+
+.app-container {
   text-align: center;
+  max-width: 100%;
+  overflow-x: hidden;
+  background-color: #333;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.top {
+  margin: 10px 0;
+  background-color: rgb(31, 31, 31);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.titletext {
+  font-size: 2rem;
+  background: linear-gradient(to right, #9c20aa, #fb3570);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.genre-selector {
+  margin: 20px 0;
 }
 
-body {
-  background-color: darkgrey;
-  background-image: linear-gradient(to right, red, purple);
-  background-repeat: no-repeat;
+.genre-selector h2 {
+  margin-bottom: 10px;
 }
 
-.animal-card {
-  border: 1px solid #ccc;
-  border-radius: 8px;
+.genre-selector select {
   padding: 10px;
-  margin: 16px;
-  cursor: pointer;
-  background-color: rgba(65, 65, 65, 0.705);
-  text-align: center;
-  object-fit: cover;
-  box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.1);
+  margin-right: 10px;
 }
 
-.animal-cards-container {
+.genre-selector button {
+  padding: 10px 20px;
+}
+
+.movie-cards-container {
+  width: 100%;
+  margin: auto;
   display: flex;
-
   justify-content: center;
+  padding: 10px 0;
+  flex-wrap: wrap;
 }
 
-.animal-image {
-  width: 200;
+h2 {
+  margin: 0;
+}
+
+.slick-prev:before,
+.slick-next:before {
+  color: black;
+}
+
+.movie-card {
+  background: linear-gradient(#ccc 0 0) padding-box,
+    linear-gradient(to right, #9c20aa, #fb3570) border-box;
+  color: #313149;
+  padding: 10px;
+  border: 2px solid transparent;
+  border-radius: 15px;
+  width: 200px;
+  margin: 10px;
+  text-align: center;
+}
+
+.movie-card img {
+  width: 100%;
+  height: auto;
   border-radius: 10px;
 }
 
 .additional-info {
-  width: 60%;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  background-color: rgba(211, 211, 211, 0.705);
-  padding: 16px;
-  margin: 16px;
-  text-align: center;
-  box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.1);
-}
-
-dialog {
-  width: 80%;
-  border-radius: 20px;
-  text-align: center;
-  position: fixed;
-  left: 0;
-  top: 20%;
-}
-
-.titletext {
-  background-color: orange;
-  margin: 0;
-  margin-bottom: 20px;
-  width: 50%;
-}
-
-select {
-  border-radius: 20px;
-  text-align: center;
-  margin-bottom: 10px;
-}
-
-button {
-  border-radius: 20px;
-}
-
-.top {
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-  justify-content: center;
-  align-items: center;
-}
-
-h2 {
-  margin: 0 0 10px 0;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+  margin-top: 20px;
+  font-size: 1.2rem;
+  color: #666;
 }

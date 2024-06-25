@@ -6,7 +6,7 @@ export const fetchDataForCategory = createAsyncThunk(
   async (categoryName, thunkAPI) => {
     try {
       const response = await fetch(
-        `https://intlayer-jajv2fg8m-james-daykins-projects.vercel.app/movies/${categoryName}`
+        `https://intlayer-dxww.vercel.app/movies/${categoryName}`
       );
       if (!response.ok) {
         throw new Error("Failed to fetch category data");
@@ -24,7 +24,7 @@ export const fetchMovieData = createAsyncThunk(
   async (movieID, thunkAPI) => {
     try {
       const response = await fetch(
-        `https://your-api-url.com/movie-details/${movieID}`
+        `https://intlayer-dxww.vercel.app/movie-details/${movieID}`
       );
       if (!response.ok) {
         throw new Error("Failed to fetch movie data");

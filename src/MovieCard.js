@@ -1,12 +1,13 @@
 import React from "react";
 import "./App.css";
 
-const MovieCard = ({ name, image, genre, onClickFunction }) => {
+const MovieCard = ({ name, image, rating, category, onClickFunction }) => {
   return (
     <div onClick={() => onClickFunction()} className="movie-card">
       <h2>{name}</h2>
       <img src={image} width={200} alt={`${name}`} className="movie-image" />
-      <p>Genre: {genre}</p>
+      <p>Genre: {category}</p>
+      <p>Rating: {rating}</p>
     </div>
   );
 };
