@@ -43,7 +43,10 @@ const App = () => {
         </div>
       ) : (
         <div className="additional-info">
-          Select a genre to pull movie data from my Express API
+          Select a genre to pull movie data from my Express API.{" "}
+          <a href={"https://github.com/James-Daykin/intlayer"}>
+            Link to my Express API repo
+          </a>
         </div>
       )}
     </div>
