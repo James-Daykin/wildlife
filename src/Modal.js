@@ -1,7 +1,15 @@
 import React from "react";
 import "./App.css";
 
-const Modal = ({ name, trailer, description, onClickFunction, isOpen }) => {
+const Modal = ({
+  name,
+  trailer,
+  description,
+  onClickFunction,
+  onClickFunction2,
+  isOpen,
+  isFavourites,
+}) => {
   console.log(trailer, name);
   return (
     <div
@@ -30,7 +38,12 @@ const Modal = ({ name, trailer, description, onClickFunction, isOpen }) => {
           allowFullScreen
         ></iframe>
         <p>{description}</p>
-        <button onClick={() => onClickFunction()}>Close</button>
+        <button className="close" onClick={() => onClickFunction()}>
+          X
+        </button>
+        <button onClick={() => onClickFunction2()}>
+          {!isFavourites ? "Add to Favourites" : "Delete from Favouritess"}
+        </button>
       </dialog>
     </div>
   );

@@ -3,6 +3,7 @@
 body {
   margin: 0;
   padding: 0;
+  background-color: #333;
 }
 
 .app-container {
@@ -14,6 +15,13 @@ body {
 
 .top {
   background-color: rgb(31, 31, 31);
+}
+
+.close {
+  position: absolute;
+  right: 0;
+  top: 0;
+  margin: 15px;
 }
 
 .titletext {

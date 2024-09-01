@@ -1,6 +1,10 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { fetchDataForCategory, fetchDataForCountry } from "./movieSlice";
+import {
+  fetchDataForCategory,
+  fetchDataForCountry,
+  setIsFavourites,
+} from "./movieSlice";
 
 const genres = [{ name: "Comedy" }, { name: "Action" }, { name: "Romance" }];
 
@@ -15,6 +19,7 @@ const Body = () => {
   const handleFetchData = () => {
     if (selectedGenre) {
       dispatch(fetchDataForCategory(selectedGenre));
+      dispatch(setIsFavourites(false));
     }
   };
 
@@ -32,6 +37,14 @@ const Body = () => {
         </select>
         <button onClick={handleFetchData} disabled={!selectedGenre}>
           Fetch Data
+        </button>
+        <button
+          style={{ marginLeft: "10px" }}
+          onClick={() => {
+            dispatch(setIsFavourites(true));
+          }}
+        >
+          Favourites
         </button>
       </div>
     </div>

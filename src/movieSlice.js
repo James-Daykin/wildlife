@@ -42,10 +42,37 @@ const movieSlice = createSlice({
   initialState: {
     movieData: [],
     selectedMovie: null,
+    watchList: [],
+    isFavourites: false,
     loading: false,
     error: null,
   },
-  reducers: {},
+  reducers: {
+    setWatchList: (state, action) => {
+      const itemExists = state.watchList.some(
+        (item) => item.id === action.payload.id
+      );
+      if (itemExists) {
+        return state;
+      }
+      return {
+        ...state,
+        watchList: [...state.watchList, action.payload],
+      };
+    },
+    removeFromWatchList: (state, action) => {
+      return {
+        ...state,
+        watchList: state.watchList.filter(
+          (item) => item.id !== action.payload.id
+        ),
+      };
+    },
+    setIsFavourites: (state, action) => {
+      state.isFavourites = action.payload;
+      return state;
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(fetchDataForCategory.pending, (state) => {
@@ -76,6 +103,7 @@ const movieSlice = createSlice({
 });
 
 export const { reducer: moviesReducer } = movieSlice; // Exporting the reducer
-export const { actions } = movieSlice; // Exporting the actions
+export const { setWatchList, removeFromWatchList, setIsFavourites } =
+  movieSlice.actions; // Exporting the actions
 
 // Export other actions or selectors if needed
